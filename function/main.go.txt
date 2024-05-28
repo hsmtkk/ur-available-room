@@ -1,0 +1,17 @@
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/hsmtkk/ur-available-room/room"
+)
+
+func main() {
+	req := room.Requirement{RentHigh: 150000, FloorSpaceLow: 50, Room: []string{"3K", "3DK", "3LDK"}, Prefecture: room.Tokyo, Area: room.East23}
+	rooms, err := room.New().Get(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(rooms)
+}
